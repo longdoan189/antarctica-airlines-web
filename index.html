@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="long, manh">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="./img/flag.jpg"> 
+    <title>🐧 Antarctica Airlines - Home</title>
+</head>
+
+<body>
+    <header class="header">
+        <img src="./img/logo.jpg" alt="Antarctica Airlines logo" class="logo">
+        <nav class="header-nav">
+            <section class="top-nav">
+                <input id="menu-toggle" type="checkbox" />
+                <label class='menu-button-container' for="menu-toggle">
+                <div class='menu-button'></div>
+              </label>
+                <ul class="menu">
+                  <li>
+                    <a id="index_a" href="./index.html">Home</a>
+                  </li>
+                  <li>
+                    <a id="product_a" href="./product.html">Product</a>
+                  </li>
+                  <li>
+                    <a id="about_a" href="./about.html">About</a></li>
+                  <li>
+                    <a id="schedule_a" href="./schedule.html">Schedule</a>
+                  </li>
+                  <li>
+                    <a id="acknowledge_a" href="./acknowledge.html">Acknowledge</a>
+                  </li>
+                  <li>
+                    <a id="booking_a" href="./booking.html">Booking</a>
+                  </li>
+                </ul>
+              </section>
+        </nav>
+    </header>
+    <div class="sliderAlternative">
+        <h2>Welcome to Antarctica Airlines!</h2>
+    </div>
+    <div class="w3-display-container">
+        <div class="mySlides">
+            <div class="intro">
+                <h1>Welcome to Antarctica Airlines!</h1>
+            </div>
+            <a href="./about.html">
+                <img src="./img/promo/promo.jpg" alt="Aeroplane" class="promo-img">
+            </a>
+        </div>
+        <div class="mySlides">
+            <div class="intro">
+                <h1>Flag carrier of Antarctica</h1>
+            </div>
+            <a href="./schedule.html">
+                <img src="./img/promo/flag-map.png" alt="Antarctica flag map" class="promo-img">
+            </a>
+        </div>
+        <div class="mySlides">
+            <div class="intro">
+                <h1>The airline that did not, do not, and will not ever delay your flights!</h1>
+            </div>
+            <a href="./booking.html">
+                <img src="./img/promo/review.png" alt="Perfect record" class="promo-img">
+            </a>
+        </div>
+        <button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+        <button class="w3-button w3-display-right" onclick="plusDivs(+1)">&#10095;</button>
+    </div>
+    <div class="content">
+        <div class="subcontent" id="left">
+           <p>We have over tens destinations to unique cities in all 5 continents of the world. Our flights are proudly served by the most modern aircrafts in the world driven the most experience pilots in the world. Found out more about us our destination <a href="./product.html">here</a> </p>
+           <img src="./img/BT-67.jpg" alt="Antarctica's aircraft">
+           <p class="subscript">Our BT-67 took off </p>
+        </div>
+
+        <div class="subcontent" id="mid">
+            <p>We are proudly the flag carrier of Antarctica, as well as the only flag carrier of the whole continent in the world (fun fact, our friend <a href="http://aa.com/">American Airlines</a> despite their name is not a flag carrier of American continent though).  Read more about us <a href="./about.html">here</a> </p>
+           <img src="./img/South-Pole.jpg" alt="Antarctica's aircraft loading">
+           <p class="subscript">Our flight cooperated with the US Airforce </p>
+        </div>
+      
+        <div class="subcontent" id="right">
+            <p>We have our flight daily and internationally from all major Antarctican airport. We proudly announced we recorded no flight incident and delay since foundation despite Antarctican "friendly" weather. Read more about schedule <a href="./schedule.html">here</a></p>
+            <img src="./img/gentoo.jpg" alt="Gentoo penguin">
+            <p class="subscript">Our Air-traffic controller: Gentoo</p>
+        </div>
+    </div>
+    <footer class="footer">
+        <span>© Antarctica Airlines 2023</span>
+        <span>Date update: 12-04-2023</span>
+    </footer>
+
+    <script>
+        var myIndex = -1;
+        carousel();
+        var timeout;
+        
+        function carousel() {
+          var i;
+          var x = document.getElementsByClassName("mySlides");
+          for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";  
+          }
+          myIndex++;
+          myIndex = myIndex%x.length   
+          x[myIndex].style.display = "block";  
+          timeout = window.setTimeout(carousel, 2000); // Change image every 2 seconds
+        }
+
+        function plusDivs(num) {
+            var x = document.getElementsByClassName("mySlides");
+            myIndex = (myIndex + num - 1)%3;
+            if (myIndex < 0) {
+                myIndex = x.length + myIndex
+            }
+            window.clearTimeout(timeout);
+            carousel()
+        }
+    </script>
+    <script src="./script.js"></script>
+</body>
+
+
+</html>

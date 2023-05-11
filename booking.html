@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="long, manh">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="./img/flag.jpg">
+    <title>🐧 Antarctica Airlines - Booking</title>
+</head>
+
+<body>
+    <header class="header">
+        <img src="./img/logo.jpg" alt="Antarctica Airlines logo" class="logo">
+        <nav class="header-nav">
+            <section class="top-nav">
+                <input id="menu-toggle" type="checkbox" />
+                <label class='menu-button-container' for="menu-toggle">
+                <div class='menu-button'></div>
+              </label>
+                <ul class="menu">
+                  <li>
+                    <a id="index_a" href="./index.html">Home</a>
+                  </li>
+                  <li>
+                    <a id="product_a" href="./product.html">Product</a>
+                  </li>
+                  <li>
+                    <a id="about_a" href="./about.html">About</a></li>
+                  <li>
+                    <a id="schedule_a" href="./schedule.html">Schedule</a>
+                  </li>
+                  <li>
+                    <a id="acknowledge_a" href="./acknowledge.html">Acknowledge</a>
+                  </li>
+                  <li>
+                    <a id="booking_a" href="./booking.html">Booking</a>
+                  </li>
+                </ul>
+              </section>
+        </nav>
+    </header>
+    <h1 class="booking-title">Book ticket with us (for Vietnamese customer)</h1>
+    <h3 class="booking-title">Instruction: fill all fields in the form. Due to logistics constraint of Antarctica, you will receive your exact flying date few days later!</h3>
+    <form name="booking" action="success.html" onsubmit="return validateForm()" class="booking-form">
+        <div class="booking-field" id="fname">
+            <label for="fname">First name:</label><br>
+            <input type="text" name="fname" placeholder="Mạnh" required>
+            <p class="error-input" id="fname_er"></p>
+        </div>
+        <div class="booking-field" id="lname">
+            <label for="lname">Last name:</label><br>
+            <input type="text" name="lname" placeholder="Đoàn" required>
+            <p class="error-input" id="lname_er"></p>
+        </div>
+        <div class="booking-field" id="dob">
+            <label for="dob">Date of birth: </label><br>
+            <input type="date" name="dob" required>
+            <p class="error-input" id="dob_er"></p>
+        </div>
+        <div class="booking-field" id="mobile">
+          <label for="mobile">Mobile (Vietnamese number starts with 0): </label><br>
+          <input type="tel" name="mobile" placeholder="01234567890" required>
+          <p class="error-input" id="mobile_er"></p>
+      </div>
+        <div class="booking-field" id="address">
+            <label for="address">Vietnamese home address (House number; Street; Ward; District; City or Province): </label><br>
+            <textarea name="address" placeholder="1, đường Độc Lập, phường Quán Thánh, quận Ba Đình, Hà Nội" required></textarea>
+            <p class="error-input" id="address_er"></p>
+        </div>
+        <div class="booking-field" id="email">
+            <label for="email">Email: </label><br>
+            <input type="email" name="email" placeholder="qa@aaa.aq" required>
+            <p class="error-input" id="email_er"></p>
+        </div>
+        <div class="booking-field" id="arrdep_d">
+            <label for="arrdep">Ticket mode </label><br>
+            <select name="arrdep" id="arrdep" required>
+                <option value="" disabled selected>Select your option</option>
+                <option value="1f">One-way from</option>
+                <option value="1t">One-way to</option>
+                <option value="2f">Two-way start from</option>
+                <option value="2t">Two-way end in</option>
+            </select>
+            <p class="error-input" id="arrdep_er"></p>
+        </div>
+        <div class="booking-field" id="cities_d">
+            <label for="cities">Cities: </label><br>
+            <select name="cities" id="cities" required>
+                <option value="" disabled selected>Select your option</option>
+                <option value="Almaty">Almaty</option>
+                <option value="Busan">Busan</option>
+                <option value="Chelyabinsk">Chelyabinsk</option>
+                <option value="Ciudad de San Jose">Ciudad de San Jose</option>
+                <option value="Haifa">Haifa</option>
+                <option value="Havana">Havana</option>
+                <option value="Ho Chi Minh City">Ho Chi Minh City</option>
+                <option value="Kyiv">Kyiv</option>
+                <option value="Luxembourg">Luxembourg</option>
+                <option value="Macau">Macau</option>
+                <option value="Male">Male</option>
+                <option value="Milan">Milan</option>
+                <option value="Montevideo">Montevideo</option>
+                <option value="Naha">Naha</option>
+                <option value="North Pole Town">North Pole Town</option>
+                <option value="Null Island">Null Island</option>
+                <option value="Perth">Perth</option>
+                <option value="Podgorica">Podgorica</option>
+                <option value="Seattle">Seattle</option>
+                <option value="Socotra">Socotra</option>
+                <option value="Stockholm">Stockholm</option>
+                <option value="Suva">Suva</option>
+                <option value="Tenerife">Tenerife</option>
+                <option value="Thimphu">Thimphu</option>
+                <option value="Windhoek">Windhoek</option>
+              </select>
+            <p class="error-input" id="cities_er"></p>
+        </div>
+        <div class="booking-field" id="button">
+            <input type="submit" id="submit" value="Submit the booking">
+            <input type="reset" id="reset" value="Reset my selection">
+        </div>
+    </form> 
+    <footer class="footer">
+        <span>© Antarctica Airlines 2023</span>
+        <span>Date update: 12-04-2023</span>
+    </footer>
+</body>
+
+<script>
+function calculateAge(birthday) { // birthday is a date
+   birthday = new Date(birthday)
+   var ageDifMs = Date.now() - birthday;
+   var ageDate = new Date(ageDifMs); // miliseconds from epoch
+   return ageDate.getUTCFullYear() - 1970;
+ }
+ function removeVietnameseTones(str) {
+    str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g,"a"); 
+    str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g,"e"); 
+    str = str.replace(/ì|í|ị|ỉ|ĩ/g,"i"); 
+    str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g,"o"); 
+    str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g,"u"); 
+    str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g,"y"); 
+    str = str.replace(/đ/g,"d");
+    str = str.replace(/À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ/g, "A");
+    str = str.replace(/È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ/g, "E");
+    str = str.replace(/Ì|Í|Ị|Ỉ|Ĩ/g, "I");
+    str = str.replace(/Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ/g, "O");
+    str = str.replace(/Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ/g, "U");
+    str = str.replace(/Ỳ|Ý|Ỵ|Ỷ|Ỹ/g, "Y");
+    str = str.replace(/Đ/g, "D");
+    // Some system encode vietnamese combining accent as individual utf-8 characters
+    // Một vài bộ encode coi các dấu mũ, dấu chữ như một kí tự riêng biệt nên thêm hai dòng này
+    str = str.replace(/\u0300|\u0301|\u0303|\u0309|\u0323/g, ""); // ̀ ́ ̃ ̉ ̣  huyền, sắc, ngã, hỏi, nặng
+    str = str.replace(/\u02C6|\u0306|\u031B/g, ""); // ˆ ̆ ̛  Â, Ê, Ă, Ơ, Ư
+    // Remove extra spaces
+    // Bỏ các khoảng trắng liền nhau
+    str = str.replace(/ + /g," ");
+    str = str.trim();
+    return str;
+}
+function isVietnamesePhoneNumber(number) {
+  return /(03|05|07|08|09|01[2|6|8|9])+([0-9]{8})\b/.test(number);
+}
+function validateForm() {
+  const regexchar = new RegExp(/^[a-zA-Z\- ]+$/);
+  let flags = [true, true, true, true, true, true, true,true];
+  //đã kiểm tra rỗng, kiểm tra tiếng việt?
+  fname = document.forms["booking"]["fname"].value;
+  fname_wo_diacritic = removeVietnameseTones(fname);
+  if (!regexchar.test(fname_wo_diacritic)) {
+    document.getElementById("fname_er").innerHTML = "Must only be Vietnamese character!";
+    flags[0] = false;
+  }
+  else {
+    document.getElementById("fname_er").innerHTML = "";
+    flags[0] = true;
+  }
+  lname = document.forms["booking"]["lname"].value; 
+  lname_wo_diacritic = removeVietnameseTones(lname);
+  if (!regexchar.test(lname_wo_diacritic)) {
+    document.getElementById("lname_er").innerHTML = "Must only be Vietnamese character!";
+    flags[1] = false;
+  }
+  else {
+    document.getElementById("lname_er").innerHTML = "";
+    flags[1] = true;
+  }
+  dob = document.forms["booking"]["dob"].value;
+  if ( calculateAge(dob) > 200 || calculateAge(dob) < 0 ) {
+    document.getElementById("dob_er").innerHTML = "Only from 0 to 200 years old";
+    flags[2] = false;
+  }
+  else {
+    document.getElementById("dob_er").innerHTML = "";
+    flags[2] = true;
+  }
+  address = document.forms["booking"]["address"].value;
+  if ( address.length < 10 ) {
+    document.getElementById("address_er").innerHTML = "Provide a valid address!";
+    flags[3] = false;
+  }
+  else {
+    document.getElementById("address_er").innerHTML = "";
+    flags[3] = true;
+  }
+  mobile = document.forms["booking"]["mobile"].value;
+  if (!isVietnamesePhoneNumber(mobile)) {
+    document.getElementById("mobile_er").innerHTML = "Please enter correct Vietnamese mobile number";
+    flags[4] = false;
+  }
+  else {
+    document.getElementById("mobile_er").innerHTML = "";
+    flags[4] = true
+  }
+  console.log(flags)
+  for (each of flags) {
+    if (!each) {
+        alert("Some fields are not correct! Please check again")
+        return false
+    }
+  }
+  return true; 
+}
+</script>
+<script src="./script.js"></script>
+
+</html>
